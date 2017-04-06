@@ -1,10 +1,22 @@
-    var quotes = [
-            "Text 1",
-            "Text 2",
-            "Text 3"
-    ];
+$(document).ready(function() {
 
-    function newQuote() {
-    var randomNumber = Math.floor(Math.random() * (quotes.length));
-    document.getElementById("quoteArea").innerHTML = quotes[randomNumber];
-}
+    var quotes = [{
+            Quote: "Text 1",
+            Person: "Karl Pilkington"
+        },
+        {
+            Quote: "Text 2",
+            Person: "Karl Pilkington"
+        },
+        {
+            Quote: "Text 3",
+            Person: "Karl Pilkington"
+        },
+    ];
+    var randomNumber = Math.floor(Math.random() * quotes.length);
+    $("#generator").on("click", function() {
+    $("#quote").html(Object.values(quotes[randomNumber].Quote));
+    $("#person").html(Object.values(quotes[randomNumber].Person));
+    });
+
+});
