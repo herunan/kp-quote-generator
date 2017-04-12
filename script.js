@@ -15,8 +15,8 @@ $(document).ready(function() {
     ];
     var randomNumber = Math.floor(Math.random() * quotes.length);
     $("#generator").on("click", function() {
-    $("#quote").html(Object.values(quotes[randomNumber].Quote));
-    $("#person").html(Object.values(quotes[randomNumber].Person));
+    $("#quote").html(Object.values("“" + quotes[randomNumber].Quote + "”"));
+    $("#person").html(Object.values("– " + quotes[randomNumber].Person));
     });
 
 });
