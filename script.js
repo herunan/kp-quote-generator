@@ -13,10 +13,14 @@ $(document).ready(function() {
             Person: "Karl Pilkington"
         },
     ];
-    var randomNumber = Math.floor(Math.random() * quotes.length);
     $("#generator").on("click", function() {
-    $("#quote").html(Object.values("“" + quotes[randomNumber].Quote + "”"));
-    $("#person").html(Object.values("– " + quotes[randomNumber].Person));
+        var randomNumber = Math.floor(Math.random() * quotes.length);
+        $("#quote").html(Object.values("“" + quotes[randomNumber].Quote + "”"));
+        $("#person").html(Object.values(" – " + quotes[randomNumber].Person));
+    });
+    $("#tweet-button").click(function() { // create if alert for when text is not generated OR generate text on load
+        var quoteText = document.getElementById("quote-area").innerText;
+        $(".tweet").attr("href", "https://twitter.com/intent/tweet?text=" + quoteText + "%23KPquotes");
     });
 
 });
