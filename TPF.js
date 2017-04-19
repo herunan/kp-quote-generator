@@ -47,7 +47,7 @@ var arrayTweets=[];var x=tweets.length;var n=0;if(dataOnly){while(n<x){arrayTwee
 var op='';if(parseLinks){if(targetBlank){targetLinksToNewWindow(tweets[n]);if(printUser){targetLinksToNewWindow(authors[n])}}
 if(printUser){op+='<div class="user">'+strip(authors[n].innerHTML)+'</div>'}
 op+='<p class="tweet">'+strip(tweets[n].innerHTML)+'</p>';if(printTime){if(permalinks){op+='<p class="timePosted"><a href="'+permalinksURL[n]+'">'+times[n].getAttribute('aria-label')+'</a></p>'}else{op+='<p class="timePosted">'+times[n].getAttribute('aria-label')+'</p>'}}}else{if(tweets[n].textContent){if(printUser){op+='<p class="user">'+authors[n].textContent+'</p>'}
-op+='<p class="tweet">'+tweets[n].textContent+'</p>';if(printTime){op+='<p class="timePosted">'+times[n].textContent+'</p>'}}else{if(printUser){op+='<p class="user">'+authors[n].textContent+'</p>'}
+op+=tweets[n].textContent;if(printTime){op+='<p class="timePosted">'+times[n].textContent+'</p>'}}else{if(printUser){op+='<p class="user">'+authors[n].textContent+'</p>'}
 op+='<p class="tweet">'+tweets[n].textContent+'</p>';if(printTime){op+='<p class="timePosted">'+times[n].textContent+'</p>'}}}
 if(showInteractionLinks){op+='<p class="interact"><a href="https://twitter.com/intent/'+'tweet?in_reply_to='+tids[n]+'" class="twitter_reply_icon"'+(targetBlank?' target="_blank">':'>')+'Reply</a><a href="https://twitter.com/intent/retweet?'+'tweet_id='+tids[n]+'" class="twitter_retweet_icon"'+(targetBlank?' target="_blank">':'>')+'Retweet</a>'+'<a href="https://twitter.com/intent/favorite?tweet_id='+tids[n]+'" class="twitter_fav_icon"'+(targetBlank?' target="_blank">':'>')+'Favorite</a></p>'}
 if(showImages&&images[n]!==undefined&&extractImageUrl(images[n])!==undefined){op+='<div class="media">'+'<img src="'+extractImageUrl(images[n])+'" alt="Image from tweet" />'+'</div>'}
@@ -117,7 +117,7 @@ handleTweets(arrayTweets);inProgress=!1;if(queue.length>0){twitterFetcher.fetch(
  */
 
 
-var configProfile = {
+var kpFetch = {
   "profile": {"screenName": 'karlpilkingtonq'},
   "domId": 'KP-quotes',
   "maxTweets": 20,
@@ -125,8 +125,18 @@ var configProfile = {
   "showUser": false,
   "showTime": false,
   "showImages": false,
-  /*"customCallback": handleTweets,*/
+  "customCallback": kpCallback,
   "showInteraction": false,
   "lang": 'en'
 };
-twitterFetcher.fetch(configProfile);
+
+var tweetArr = [];
+
+function kpCallback(tweets) {
+for (var i = 0; i < tweets.length; i++) {
+tweetArr.push(tweets[i]);
+};
+}
+
+
+twitterFetcher.fetch(kpFetch);
