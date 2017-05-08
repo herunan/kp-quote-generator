@@ -134,7 +134,7 @@ var tweetArr = [];
 
 function kpCallback(tweets) {
 for (var i = 0; i < tweets.length; i++) {
-tweetArr.push(tweets[i]);
+tweetArr.push('“' + tweets[i] + '”');
 };
 }
 
