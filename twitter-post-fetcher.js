@@ -540,7 +540,7 @@
  *     is "en" (English).
  */
 
-let kpFetch = {
+const kpFetch = {
   "profile": {"screenName": 'karlpilkingtonq'},
   "domId": 'KP-quotes',
   "maxTweets": 20,
@@ -553,12 +553,15 @@ let kpFetch = {
   "lang": 'en'
 };
 
-let tweetArr = () => [];
-
-let kpCallback = (tweets) => {
-for (var i = 0; i < tweets.length; i++) {
-tweetArr.push('“' + tweets[i] + '”');
-};
+const kpCallback = (tweets) => {
+  let tweetArr = [];
+  for (var i = 0; i < tweets.length; i++) {
+    tweetArr.push('“' + tweets[i] + '”');
+  };
 }
+
+// export { kpCallback };
+
+console.log(kpCallback);
 
 twitterFetcher.fetch(kpFetch);
