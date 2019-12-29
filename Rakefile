@@ -1,5 +1,5 @@
 task :eslint do
-  system "/Users/hromero/code/herunan/fullstack-challenges/04-Front-End/node_modules/.bin/eslint lib/*.js"
+  system "/../fullstack-challenges/04-Front-End/node_modules/.bin/eslint lib/*.js"
 end
 
 task :mocha do
@@ -7,7 +7,7 @@ task :mocha do
 end
 
 task :webpack do
-  system "/Users/hromero/code/herunan/fullstack-challenges/04-Front-End/node_modules/.bin/webpack-dev-server"
+  system "../fullstack-challenges/04-Front-End/node_modules/.bin/webpack-dev-server"
 end
 
 task default: [:eslint]
